@@ -54,7 +54,7 @@ const OpeningScene = () => {
 
   return (
     <section id="opening-scene" className="relative h-screen w-full flex flex-col items-center justify-center overflow-hidden p-4 bg-gradient-to-br from-accent via-background to-background">
-      <FloatingParticles count={30} />
+      <FloatingParticles count={100} />
       <PetalBurst isBursting={isBursting} targetRect={buttonRect} />
       
       <div className="z-10 text-center flex flex-col items-center">

@@ -6,35 +6,33 @@ const ConfettiParticle = ({ style, shape }: { style: React.CSSProperties, shape:
   return <div style={style} className="text-2xl">{shape}</div>;
 };
 
-const FloatingParticles = ({ count = 50 }: { count?: number }) => {
+const FloatingParticles = ({ count = 100 }: { count?: number }) => {
   const [particles, setParticles] = useState<{style: React.CSSProperties, shape: string}[]>([]);
 
   useEffect(() => {
     const generateParticles = () => {
-      const shapes = ['🎉', '✨', '💖', '⭐', '🎊'];
+      const shapes = ['🎉', '✨', '💖', '⭐', '🎊', '🌸', '🎂'];
       return Array.from({ length: count }).map(() => {
-        const duration = Math.random() * 3 + 4; // 4s to 7s
-        const delay = Math.random() * 0.2; // Start burst very quickly
-        const angle = Math.random() * 360;
-        const velocity = Math.random() * 300 + 300; // Distance of travel
+        const duration = Math.random() * 5 + 5; // 5s to 10s
+        const delay = Math.random() * 5; 
+        const initialX = Math.random() * 100;
+        const initialRotation = Math.random() * 360;
+        const finalRotation = initialRotation + (Math.random() - 0.5) * 720;
+        const sway = Math.random() * 100 - 50;
 
-        const endX = Math.cos(angle * Math.PI / 180) * velocity;
-        const endY = Math.sin(angle * Math.PI / 180) * velocity + 400; // Add gravity
-        const rotation = Math.random() * 1080 - 540;
         const shape = shapes[Math.floor(Math.random() * shapes.length)];
 
         return {
           shape,
           style: {
             position: 'absolute',
-            top: `50%`,
-            left: `50%`,
+            top: '-5vh',
+            left: `${initialX}vw`,
             opacity: 1,
-            animation: `burst-realistic ${duration}s cubic-bezier(0.1, 0.5, 0.3, 1) ${delay}s forwards`,
-            '--end-x': `${endX}px`,
-            '--end-y': `${endY}px`,
-            '--rotation-start': `${rotation / 2}deg`,
-            '--rotation-end': `${rotation}deg`,
+            animation: `fall ${duration}s linear ${delay}s forwards`,
+            '--initial-rotation': `${initialRotation}deg`,
+            '--final-rotation': `${finalRotation}deg`,
+            '--sway': `${sway}px`,
           } as React.CSSProperties
         };
       });
@@ -43,17 +41,17 @@ const FloatingParticles = ({ count = 50 }: { count?: number }) => {
   }, [count]);
 
   return (
-    <div className="absolute inset-0 pointer-events-none overflow-hidden z-20">
+    <div className="absolute top-0 left-0 w-full h-full pointer-events-none overflow-hidden z-20">
       <style>
         {`
-          @keyframes burst-realistic {
+          @keyframes fall {
             0% {
-              transform: translate(-50%, -50%) rotate(var(--rotation-start)) scale(1);
+              transform: translateY(0) rotate(var(--initial-rotation));
               opacity: 1;
             }
             100% {
-              transform: translate(calc(-50% + var(--end-x)), calc(-50% + var(--end-y))) rotate(var(--rotation-end)) scale(0);
-              opacity: 0;
+              transform: translateY(105vh) translateX(var(--sway)) rotate(var(--final-rotation));
+              opacity: 0.5;
             }
           }
         `}
