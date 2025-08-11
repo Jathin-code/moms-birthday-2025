@@ -39,11 +39,11 @@ const OpeningScene = () => {
   };
 
   return (
-    <section id="opening-scene" className="relative h-screen w-full flex flex-col items-center justify-center overflow-hidden p-4 bg-gradient-to-br from-accent via-secondary to-background">
+    <section id="opening-scene" className="relative h-screen w-full flex flex-col items-center justify-center overflow-hidden p-4 bg-gradient-to-br from-accent via-background to-background">
       <FloatingParticles count={30} />
       
       <div className="z-10 text-center flex flex-col items-center">
-        <h1 className="font-headline text-5xl md:text-8xl text-primary-foreground text-glow mb-2 drop-shadow-lg">
+        <h1 className="font-headline text-5xl md:text-8xl text-foreground text-glow mb-2 drop-shadow-lg">
           Happy Birthday, Mummy
         </h1>
         <div className="font-display text-2xl md:text-4xl text-foreground/80 mb-8">
@@ -52,7 +52,8 @@ const OpeningScene = () => {
         <Button 
           onClick={scrollToNext}
           size="lg"
-          className="bg-white/20 text-foreground hover:bg-white/40 backdrop-blur-sm border border-white/30 rounded-full transition-all duration-300 group shadow-lg"
+          variant="outline"
+          className="bg-background/20 text-foreground hover:bg-background/40 backdrop-blur-sm border-foreground/30 rounded-full transition-all duration-300 group shadow-lg"
         >
           Step Inside
           <ArrowDown className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-y-1" />

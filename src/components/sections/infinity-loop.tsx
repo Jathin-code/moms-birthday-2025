@@ -33,7 +33,7 @@ const InfinityLoop = () => {
   return (
     <section ref={ref} className="w-full py-24 md:py-32 bg-secondary/30 overflow-hidden">
       <div className="container mx-auto">
-        <h2 className={`text-center font-display text-4xl md:text-6xl mb-16 text-primary-foreground transition-opacity duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
+        <h2 className={`text-center font-display text-4xl md:text-6xl mb-16 text-foreground transition-opacity duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
           An Infinity of Love
         </h2>
         <Carousel 

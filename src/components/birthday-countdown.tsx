@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import FloatingParticles from './floating-particles';
 
 const Countdown = () => {
+    const [isMounted, setIsMounted] = useState(false);
     const [timeLeft, setTimeLeft] = useState({
         days: 0,
         hours: 0,
@@ -13,6 +14,12 @@ const Countdown = () => {
     const [isBirthday, setIsBirthday] = useState(false);
 
     useEffect(() => {
+      setIsMounted(true);
+    }, [])
+
+    useEffect(() => {
+        if (!isMounted) return;
+
         const calculateTimeLeft = () => {
             const now = new Date();
             let year = now.getFullYear();
@@ -38,9 +45,10 @@ const Countdown = () => {
             }
         };
 
+        calculateTimeLeft();
         const timer = setInterval(calculateTimeLeft, 1000);
         return () => clearInterval(timer);
-    }, []);
+    }, [isMounted]);
 
     const CountdownUnit = ({ value, label }: { value: number, label: string }) => (
         <div className="flex flex-col items-center">
@@ -48,6 +56,10 @@ const Countdown = () => {
             <span className="text-xs text-foreground/70 uppercase tracking-widest">{label}</span>
         </div>
     );
+    
+    if (!isMounted) {
+      return null;
+    }
 
     return (
         <div className="fixed bottom-4 right-4 z-50">

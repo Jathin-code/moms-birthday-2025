@@ -47,14 +47,14 @@ const CrownOfQueens = () => {
                 <div className="relative group mb-8">
                     <CrownIcon 
                         className={`w-32 h-32 md:w-48 md:h-48 text-primary drop-shadow-2xl transition-transform duration-1000 group-hover:scale-110 ${spin ? 'animate-spin' : ''}`}
-                        style={{animationDuration: spin ? '1s' : '20s', animationName: 'spin', animationTimingFunction: 'linear', animationIterationCount: 'infinite'}}
+                        style={{animationDuration: spin ? '1s' : '20s', animationTimingFunction: 'linear', animationIterationCount: spin ? '1' : 'infinite'}}
                     />
                      <div className="absolute inset-0 transition-opacity duration-500 opacity-0 group-hover:opacity-100">
                         <FloatingParticles count={15} />
                     </div>
                 </div>
 
-                <h2 className={`font-display text-2xl md:text-4xl text-primary-foreground max-w-2xl transition-all duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
+                <h2 className={`font-display text-2xl md:text-4xl text-foreground max-w-2xl transition-all duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
                     To the most incredible woman I know — my Mummy, my forever queen.
                 </h2>
                 {showHeroText && (

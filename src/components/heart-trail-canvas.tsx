@@ -18,7 +18,7 @@ export const HeartTrailCanvas = () => {
       }
       heart.y -= heart.velocity;
       ctx.globalAlpha = heart.alpha;
-      ctx.fillStyle = `hsl(45, 100%, 70%)`; // Gold
+      ctx.fillStyle = `hsl(var(--primary))`;
       ctx.font = `${heart.size}px serif`;
       ctx.fillText('♥', heart.x, heart.y);
     });

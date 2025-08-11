@@ -18,8 +18,8 @@ const GiftBox = ({ isOpen }: { isOpen: boolean }) => {
       />
       {/* Ribbon */}
       <div className="absolute inset-0 flex items-center justify-center">
-        <div className="w-4 h-full bg-primary/50" />
-        <div className="absolute w-full h-4 bg-primary/50 top-1/2 -translate-y-[130%]" />
+        <div className="w-4 h-full bg-accent" />
+        <div className="absolute w-full h-4 bg-accent top-1/2 -translate-y-[130%]" />
       </div>
       {/* Glowing Heart */}
       <div className={`absolute inset-0 flex items-center justify-center transition-all duration-1000 delay-500 ${isOpen ? 'opacity-100 scale-100' : 'opacity-0 scale-50'}`}>
@@ -38,11 +38,11 @@ const GiftBoxReveal = () => {
   };
 
   return (
-    <section ref={ref} className="relative w-full min-h-screen py-24 flex flex-col items-center justify-center bg-gradient-to-t from-accent via-secondary to-background text-center overflow-hidden">
+    <section ref={ref} className="relative w-full min-h-screen py-24 flex flex-col items-center justify-center bg-gradient-to-t from-accent via-secondary/50 to-background text-center overflow-hidden">
       <div className="mb-16">
         <GiftBox isOpen={isVisible} />
       </div>
-      <h2 className={`font-headline text-6xl md:text-9xl text-primary-foreground text-glow transition-opacity duration-1000 delay-700 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
+      <h2 className={`font-headline text-6xl md:text-9xl text-foreground text-glow transition-opacity duration-1000 delay-700 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
         {finalMessage}
       </h2>
       <p className={`font-display text-3xl md:text-5xl text-foreground/80 mt-4 transition-opacity duration-1000 delay-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>

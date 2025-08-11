@@ -19,13 +19,13 @@ const MilestoneCard = ({ title, note, align }: { title: string; note: string; al
       <div className="group [perspective:1000px] w-full md:w-1/2">
         <div className="relative h-64 w-full transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
           {/* Front */}
-          <Card className="absolute w-full h-full [backface-visibility:hidden] bg-white/50 backdrop-blur-md border-primary/30 shadow-lg flex flex-col justify-center">
+          <Card className="absolute w-full h-full [backface-visibility:hidden] bg-card/80 backdrop-blur-md border-primary/30 shadow-lg flex flex-col justify-center">
             <CardHeader>
-              <CardTitle className="font-display text-2xl text-primary-foreground">{title}</CardTitle>
+              <CardTitle className="font-display text-2xl text-primary">{title}</CardTitle>
             </CardHeader>
           </Card>
           {/* Back */}
-          <Card className="absolute w-full h-full [backface-visibility:hidden] [transform:rotateY(180deg)] bg-primary/80 border-primary shadow-xl">
+          <Card className="absolute w-full h-full [backface-visibility:hidden] [transform:rotateY(180deg)] bg-primary/90 border-primary shadow-xl">
             <CardContent className="flex h-full items-center justify-center p-6">
               <CardDescription className="text-center font-body text-lg text-primary-foreground/90">
                 {note}
@@ -43,7 +43,7 @@ const HeartTrailMilestones = () => {
     const isVisible = useOnScreen(ref, '-200px');
   return (
     <section id="heart-trail" ref={ref} className="relative w-full py-24 md:py-32 container mx-auto px-4">
-       <h2 className={`text-center font-display text-4xl md:text-6xl mb-4 text-primary-foreground transition-opacity duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
+       <h2 className={`text-center font-display text-4xl md:text-6xl mb-4 text-foreground transition-opacity duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
         A Path Paved with Love
       </h2>
       <p className={`text-center text-lg md:text-xl text-foreground/70 mb-16 transition-opacity duration-1000 delay-300 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
