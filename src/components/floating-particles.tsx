@@ -2,36 +2,41 @@
 
 import React, { useState, useEffect } from 'react';
 
-const ConfettiParticle = ({ style }: { style: React.CSSProperties }) => {
-  const shapes = ['🎉', '✨', '💖', '⭐', '🎊'];
-  const [shape] = useState(() => shapes[Math.floor(Math.random() * shapes.length)]);
-  
+const ConfettiParticle = ({ style, shape }: { style: React.CSSProperties, shape: string }) => {
   return <div style={style} className="text-2xl">{shape}</div>;
 };
 
 const FloatingParticles = ({ count = 50 }: { count?: number }) => {
-  const [particles, setParticles] = useState<React.CSSProperties[]>([]);
+  const [particles, setParticles] = useState<{style: React.CSSProperties, shape: string}[]>([]);
 
   useEffect(() => {
     const generateParticles = () => {
-      return Array.from({ length: count }).map((_, i) => {
-        const duration = Math.random() * 4 + 3; // 3s to 7s
-        const delay = Math.random() * 0.5; // Start burst quickly
-        const startY = Math.random() * 100;
-        const startX = i % 2 === 0 ? -10 : 110; // Start from left or right off-screen
-        const endX = startX < 0 ? Math.random() * 40 + 20 : Math.random() * 40 + 40;
-        const endY = startY + (Math.random() - 0.5) * 200;
-        const rotation = Math.random() * 720 - 360;
+      const shapes = ['🎉', '✨', '💖', '⭐', '🎊'];
+      return Array.from({ length: count }).map(() => {
+        const duration = Math.random() * 3 + 4; // 4s to 7s
+        const delay = Math.random() * 0.2; // Start burst very quickly
+        const angle = Math.random() * 360;
+        const velocity = Math.random() * 300 + 300; // Distance of travel
+
+        const endX = Math.cos(angle * Math.PI / 180) * velocity;
+        const endY = Math.sin(angle * Math.PI / 180) * velocity + 400; // Add gravity
+        const rotation = Math.random() * 1080 - 540;
+        const shape = shapes[Math.floor(Math.random() * shapes.length)];
 
         return {
-          position: 'absolute',
-          top: `${startY}vh`,
-          left: `${startX}vw`,
-          animation: `burst ${duration}s ease-out ${delay}s forwards`,
-          '--end-x': `${endX}vw`,
-          '--end-y': `${endY}vh`,
-          '--rotation': `${rotation}deg`,
-        } as React.CSSProperties;
+          shape,
+          style: {
+            position: 'absolute',
+            top: `50%`,
+            left: `50%`,
+            opacity: 1,
+            animation: `burst-realistic ${duration}s cubic-bezier(0.1, 0.5, 0.3, 1) ${delay}s forwards`,
+            '--end-x': `${endX}px`,
+            '--end-y': `${endY}px`,
+            '--rotation-start': `${rotation / 2}deg`,
+            '--rotation-end': `${rotation}deg`,
+          } as React.CSSProperties
+        };
       });
     };
     setParticles(generateParticles());
@@ -41,20 +46,20 @@ const FloatingParticles = ({ count = 50 }: { count?: number }) => {
     <div className="absolute inset-0 pointer-events-none overflow-hidden z-20">
       <style>
         {`
-          @keyframes burst {
+          @keyframes burst-realistic {
             0% {
-              transform: translate(0, 0) rotate(0deg);
+              transform: translate(-50%, -50%) rotate(var(--rotation-start)) scale(1);
               opacity: 1;
             }
             100% {
-              transform: translate(var(--end-x), var(--end-y)) rotate(var(--rotation));
+              transform: translate(calc(-50% + var(--end-x)), calc(-50% + var(--end-y))) rotate(var(--rotation-end)) scale(0);
               opacity: 0;
             }
           }
         `}
       </style>
-      {particles.map((style, i) => (
-        <ConfettiParticle key={i} style={style} />
+      {particles.map((p, i) => (
+        <ConfettiParticle key={i} style={p.style} shape={p.shape} />
       ))}
     </div>
   );
