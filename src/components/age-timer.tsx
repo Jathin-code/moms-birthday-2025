@@ -64,8 +64,8 @@ const AgeTimer = () => {
 
     const TimeUnit = ({ value, label }: { value: number, label: string }) => (
         <div className="flex flex-col items-center">
-            <span className="text-4xl md:text-6xl font-bold font-display text-primary text-glow">{String(value).padStart(2, '0')}</span>
-            <span className="text-sm text-foreground/70 uppercase tracking-widest">{label}</span>
+            <span className="text-2xl md:text-6xl font-bold font-display text-primary text-glow">{String(value).padStart(2, '0')}</span>
+            <span className="text-xs md:text-sm text-foreground/70 uppercase tracking-widest">{label}</span>
         </div>
     );
     
@@ -74,8 +74,8 @@ const AgeTimer = () => {
     }
 
     return (
-        <div className="relative bg-background/50 backdrop-blur-md border border-primary/20 rounded-lg p-6 shadow-lg">
-            <div className="flex items-center gap-4 md:gap-8">
+        <div className="relative bg-background/50 backdrop-blur-md border border-primary/20 rounded-lg p-4 md:p-6 shadow-lg">
+            <div className="flex items-center gap-2 md:gap-8">
                 <TimeUnit value={timeLived.years} label="Years" />
                 <TimeUnit value={timeLived.months} label="Months" />
                 <TimeUnit value={timeLived.days} label="Days" />

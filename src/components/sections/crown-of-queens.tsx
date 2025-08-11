@@ -37,11 +37,11 @@ const CrownOfQueens = () => {
         <section ref={ref} className="relative w-full py-24 md:py-48 bg-secondary/30 overflow-hidden">
             <FloatingParticles count={20} />
             <div className="container mx-auto px-4 z-10 text-center flex flex-col items-center">
-                <h2 className={`font-display text-2xl md:text-4xl text-foreground max-w-2xl transition-all duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
+                <h2 className={`font-display text-xl md:text-4xl text-foreground max-w-2xl transition-all duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
                     To the most incredible woman I know — my Mummy, my forever queen.
                 </h2>
                 {showHeroText && (
-                    <p className="font-display text-3xl md:text-5xl text-primary mt-4 text-glow animate-pulse">You're my hero.</p>
+                    <p className="font-display text-2xl md:text-5xl text-primary mt-4 text-glow animate-pulse">You're my hero.</p>
                 )}
             </div>
         </section>

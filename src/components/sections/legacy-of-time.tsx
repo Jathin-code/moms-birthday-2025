@@ -19,7 +19,7 @@ const LegacyOfTime = () => {
                 <AgeTimer />
             </div>
 
-            <p className={`font-body text-lg md:text-xl text-foreground/80 mt-12 max-w-2xl transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
+            <p className={`font-body text-base md:text-xl text-foreground/80 mt-12 max-w-2xl transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
                 Every second is a testament to the incredible person you are becoming. This is your journey, unfolding in real-time.
             </p>
         </div>
