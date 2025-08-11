@@ -59,7 +59,7 @@ export const HeartTrailCanvas = () => {
     };
 
     // We only want this effect on desktop, so we check for touch support
-    const isTouchDevice = 'ontouchstart' in window;
+    const isTouchDevice = typeof window !== 'undefined' && ('ontouchstart' in window || navigator.maxTouchPoints > 0);
 
     if (!isTouchDevice) {
         document.addEventListener('mousemove', handleMouseMove);
