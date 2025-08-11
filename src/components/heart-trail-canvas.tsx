@@ -1,7 +1,7 @@
+
 "use client";
 
 import React, { useRef, useEffect, useCallback, useState } from 'react';
-import { useOnScreen } from './use-on-screen';
 
 export const HeartTrailCanvas = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -53,7 +53,7 @@ export const HeartTrailCanvas = () => {
     
     const handleMouseMove = (event: MouseEvent) => handleMove(event.clientX, event.clientY);
     const handleTouchMove = (event: TouchEvent) => {
-      event.preventDefault();
+      // We don't preventDefault here to allow scrolling
       handleMove(event.touches[0].clientX, event.touches[0].clientY);
     };
 
@@ -67,7 +67,7 @@ export const HeartTrailCanvas = () => {
     window.addEventListener('resize', resizeCanvas);
     resizeCanvas();
     document.addEventListener('mousemove', handleMouseMove);
-    document.addEventListener('touchmove', handleTouchMove, { passive: false });
+    document.addEventListener('touchmove', handleTouchMove, { passive: true }); // Use passive listener
 
     return () => {
       window.cancelAnimationFrame(animationFrameId);
