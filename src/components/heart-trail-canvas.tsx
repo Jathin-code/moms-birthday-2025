@@ -18,7 +18,7 @@ export const HeartTrailCanvas = () => {
       }
       heart.y -= heart.velocity;
       ctx.globalAlpha = heart.alpha;
-      ctx.fillStyle = `hsl(var(--primary))`;
+      ctx.fillStyle = heart.color;
       ctx.font = `${heart.size}px serif`;
       ctx.fillText('♥', heart.x, heart.y);
     });
@@ -40,12 +40,14 @@ export const HeartTrailCanvas = () => {
 
     const handleMove = (x: number, y: number) => {
       const rect = canvas.getBoundingClientRect();
+      const colors = ['#FFDDE6', '#D6EAF8'];
       hearts.current.push({
         x: x - rect.left,
         y: y - rect.top,
         alpha: 1.0,
         size: Math.random() * 15 + 10,
         velocity: Math.random() * 1.5 + 0.5,
+        color: colors[Math.floor(Math.random() * colors.length)],
       });
     };
     
