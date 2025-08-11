@@ -2,30 +2,33 @@
 
 import React, { useState, useEffect } from 'react';
 
-const FloatingParticles = ({ count = 20 }: { count?: number }) => {
+const ConfettiParticle = ({ style }: { style: React.CSSProperties }) => {
+  const shapes = ['🎉', '✨', '💖', '⭐', '🎊'];
+  const [shape] = useState(() => shapes[Math.floor(Math.random() * shapes.length)]);
+  
+  return <div style={style} className="text-2xl">{shape}</div>;
+};
+
+const FloatingParticles = ({ count = 50 }: { count?: number }) => {
   const [particles, setParticles] = useState<React.CSSProperties[]>([]);
 
   useEffect(() => {
     const generateParticles = () => {
       return Array.from({ length: count }).map((_, i) => {
-        const size = Math.random() * 5 + 2;
-        const duration = Math.random() * 15 + 10;
-        const delay = Math.random() * -25;
+        const duration = Math.random() * 5 + 5; // 5s to 10s
+        const delay = Math.random() * 5;
         const startX = Math.random() * 100;
-        const endX = startX + (Math.random() - 0.5) * 20;
+        const endX = startX + (Math.random() - 0.5) * 60;
+        const rotation = Math.random() * 720 - 360;
 
         return {
           position: 'absolute',
-          width: `${size}px`,
-          height: `${size}px`,
-          backgroundColor: 'hsl(var(--primary) / 0.7)',
-          borderRadius: '50%',
-          top: `${Math.random() * 100}%`,
           left: `${startX}vw`,
-          animation: `float ${duration}s ease-in-out ${delay}s infinite`,
-          boxShadow: `0 0 8px hsl(var(--primary) / 0.5)`,
+          top: '-5vh',
+          animation: `fall ${duration}s linear ${delay}s forwards`,
           '--start-x': `${startX}vw`,
           '--end-x': `${endX}vw`,
+          '--rotation': `${rotation}deg`,
         } as React.CSSProperties;
       });
     };
@@ -33,26 +36,23 @@ const FloatingParticles = ({ count = 20 }: { count?: number }) => {
   }, [count]);
 
   return (
-    <div className="absolute inset-0 pointer-events-none overflow-hidden">
+    <div className="absolute inset-0 pointer-events-none overflow-hidden z-20">
       <style>
         {`
-          @keyframes float {
+          @keyframes fall {
             0% {
-              transform: translateY(5vh) translateX(var(--start-x)) scale(1);
-              opacity: 0;
-            }
-            10%, 90% {
+              transform: translateY(-5vh) rotate(0deg);
               opacity: 1;
             }
             100% {
-              transform: translateY(-105vh) translateX(var(--end-x)) scale(0.5);
+              transform: translateY(105vh) rotate(var(--rotation));
               opacity: 0;
             }
           }
         `}
       </style>
       {particles.map((style, i) => (
-        <div key={i} style={style} />
+        <ConfettiParticle key={i} style={style} />
       ))}
     </div>
   );
