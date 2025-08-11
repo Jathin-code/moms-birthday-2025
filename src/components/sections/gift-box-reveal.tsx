@@ -42,10 +42,10 @@ const GiftBoxReveal = () => {
       <div className="mb-16">
         <GiftBox isOpen={isVisible} />
       </div>
-      <h2 className={`font-headline text-6xl md:text-9xl text-foreground text-glow transition-opacity duration-1000 delay-700 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
+      <h2 className={`font-headline text-5xl md:text-7xl text-foreground text-glow transition-opacity duration-1000 delay-700 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
         {finalMessage}
       </h2>
-      <p className={`font-display text-3xl md:text-5xl text-foreground/80 mt-4 transition-opacity duration-1000 delay-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
+      <p className={`font-display text-2xl md:text-3xl text-foreground/80 mt-4 transition-opacity duration-1000 delay-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
         {finalSender}
       </p>
 
