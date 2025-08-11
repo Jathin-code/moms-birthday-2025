@@ -20,7 +20,7 @@ const ScrollOfForeverLove = () => {
             <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
                 <Typewriter text={longLetter} speed={20} start={isVisible} className="font-body text-lg md:text-xl text-foreground/80 leading-relaxed" />
                 <p className="font-display text-2xl md:text-3xl text-primary text-center mt-12 text-glow">
-                    <Typewriter text={finalScrollMessage} speed={80} start={isVisible} />
+                    <Typewriter text={finalScrollMessage} speed={80} start={isVisible} as="span" />
                 </p>
             </div>
         </div>

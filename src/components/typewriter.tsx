@@ -6,9 +6,10 @@ type TypewriterProps = {
   speed?: number;
   className?: string;
   start?: boolean;
+  as?: React.ElementType;
 };
 
-const Typewriter = ({ text, speed = 50, className, start = true }: TypewriterProps) => {
+const Typewriter = ({ text, speed = 50, className, start = true, as: Component = 'p' }: TypewriterProps) => {
   const [displayedText, setDisplayedText] = useState('');
 
   useEffect(() => {
@@ -26,7 +27,7 @@ const Typewriter = ({ text, speed = 50, className, start = true }: TypewriterPro
     }
   }, [text, speed, start]);
 
-  return <p className={className}>{displayedText}</p>;
+  return <Component className={className}>{displayedText}</Component>;
 };
 
 export default Typewriter;
