@@ -16,9 +16,9 @@ const Blossom = ({ message, delay }: { message: string; delay: number }) => {
       style={{ transitionDelay: `${delay}ms` }}
     >
       <div className="absolute -inset-2 bg-primary/30 rounded-full blur-2xl animate-pulse" style={{ animationDelay: `${delay}ms`}}></div>
-      <Card className="w-72 h-48 m-4 backdrop-blur-lg bg-white/20 border-primary/20 shadow-2xl shadow-primary/10 transition-transform hover:scale-105 duration-300">
-        <CardContent className="flex items-center justify-center h-full">
-          <p className="text-center font-display text-xl text-primary-foreground">{message}</p>
+      <Card className="w-72 h-48 m-4 backdrop-blur-lg bg-white/50 border-primary/20 shadow-2xl shadow-primary/10 transition-transform hover:scale-105 duration-300">
+        <CardContent className="flex items-center justify-center h-full p-6">
+          <p className="text-center font-display text-xl text-foreground">{message}</p>
         </CardContent>
       </Card>
     </div>

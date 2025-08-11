@@ -10,6 +10,7 @@ import ScrollOfForeverLove from '@/components/sections/scroll-of-forever-love';
 import InfinityLoop from '@/components/sections/infinity-loop';
 import GiftBoxReveal from '@/components/sections/gift-box-reveal';
 import { HeartTrailCanvas } from '@/components/heart-trail-canvas';
+import BirthdayCountdown from '@/components/birthday-countdown';
 
 export default function Home() {
   return (
@@ -23,6 +24,7 @@ export default function Home() {
       <ScrollOfForeverLove />
       <InfinityLoop />
       <GiftBoxReveal />
+      <BirthdayCountdown />
     </main>
   );
 }
