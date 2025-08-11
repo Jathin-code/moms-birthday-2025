@@ -1,14 +1,18 @@
 "use client";
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { ArrowDown, Gift } from 'lucide-react';
 import Typewriter from '@/components/typewriter';
 import FloatingParticles from '@/components/floating-particles';
+import { PetalBurst } from '@/components/petal-burst';
 
 const OpeningScene = () => {
   const [gateOpen, setGateOpen] = useState(false);
   const [typed, setTyped] = useState('');
+  const [isBursting, setIsBursting] = useState(false);
+  const [buttonRect, setButtonRect] = useState<DOMRect | null>(null);
+  const buttonRef = useRef<HTMLButtonElement>(null);
   const magicWord = 'love';
 
   useEffect(() => {
@@ -31,6 +35,16 @@ const OpeningScene = () => {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [typed, gateOpen]);
 
+  const handleButtonClick = () => {
+    if (buttonRef.current) {
+      setButtonRect(buttonRef.current.getBoundingClientRect());
+      setIsBursting(true);
+      // Reset after a short delay to allow re-triggering
+      setTimeout(() => setIsBursting(false), 100);
+    }
+    scrollToNext();
+  };
+
   const scrollToNext = () => {
     const nextSection = document.getElementById('garden-of-gratitude');
     if (nextSection) {
@@ -41,6 +55,7 @@ const OpeningScene = () => {
   return (
     <section id="opening-scene" className="relative h-screen w-full flex flex-col items-center justify-center overflow-hidden p-4 bg-gradient-to-br from-accent via-background to-background">
       <FloatingParticles count={30} />
+      <PetalBurst isBursting={isBursting} targetRect={buttonRect} />
       
       <div className="z-10 text-center flex flex-col items-center">
         <h1 className="font-headline text-5xl md:text-8xl text-foreground text-glow mb-2 drop-shadow-lg">
@@ -50,7 +65,8 @@ const OpeningScene = () => {
             <Typewriter text="My Queen, My Strength, My Everything" speed={100} />
         </div>
         <Button 
-          onClick={scrollToNext}
+          ref={buttonRef}
+          onClick={handleButtonClick}
           size="lg"
           variant="outline"
           className="bg-background/20 text-foreground hover:bg-background/40 backdrop-blur-sm border-foreground/30 rounded-full transition-all duration-300 group shadow-lg"
