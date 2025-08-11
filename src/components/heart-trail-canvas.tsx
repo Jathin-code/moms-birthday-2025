@@ -1,7 +1,7 @@
 
 "use client";
 
-import React, { useRef, useEffect, useCallback, useState } from 'react';
+import React, { useRef, useEffect, useCallback } from 'react';
 
 export const HeartTrailCanvas = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -38,25 +38,19 @@ export const HeartTrailCanvas = () => {
     };
     render();
 
-    const handleMove = (x: number, y: number) => {
-      const rect = canvas.getBoundingClientRect();
-      const colors = ['#E5989B', '#6D98BA'];
-      hearts.current.push({
-        x: x - rect.left,
-        y: y - rect.top,
-        alpha: 1.0,
-        size: Math.random() * 15 + 10,
-        velocity: Math.random() * 1.5 + 0.5,
-        color: colors[Math.floor(Math.random() * colors.length)],
-      });
+    const handleMouseMove = (event: MouseEvent) => {
+        const rect = canvas.getBoundingClientRect();
+        const colors = ['#E5989B', '#6D98BA'];
+        hearts.current.push({
+            x: event.clientX - rect.left,
+            y: event.clientY - rect.top,
+            alpha: 1.0,
+            size: Math.random() * 15 + 10,
+            velocity: Math.random() * 1.5 + 0.5,
+            color: colors[Math.floor(Math.random() * colors.length)],
+        });
     };
     
-    const handleMouseMove = (event: MouseEvent) => handleMove(event.clientX, event.clientY);
-    const handleTouchMove = (event: TouchEvent) => {
-      // We don't preventDefault here to allow scrolling
-      handleMove(event.touches[0].clientX, event.touches[0].clientY);
-    };
-
     const resizeCanvas = () => {
       if (canvasRef.current) {
         canvasRef.current.width = window.innerWidth;
@@ -64,15 +58,21 @@ export const HeartTrailCanvas = () => {
       }
     };
 
+    // We only want this effect on desktop, so we check for touch support
+    const isTouchDevice = 'ontouchstart' in window;
+
+    if (!isTouchDevice) {
+        document.addEventListener('mousemove', handleMouseMove);
+    }
+    
     window.addEventListener('resize', resizeCanvas);
     resizeCanvas();
-    document.addEventListener('mousemove', handleMouseMove);
-    document.addEventListener('touchmove', handleTouchMove, { passive: true }); // Use passive listener
 
     return () => {
       window.cancelAnimationFrame(animationFrameId);
-      document.removeEventListener('mousemove', handleMouseMove);
-      document.removeEventListener('touchmove', handleTouchMove);
+      if (!isTouchDevice) {
+        document.removeEventListener('mousemove', handleMouseMove);
+      }
       window.removeEventListener('resize', resizeCanvas);
     };
   }, [draw]);
