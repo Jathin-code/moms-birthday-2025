@@ -3,6 +3,13 @@ export const shortMessages = [
   "For your endless love ❤️",
   "For your comforting words 🤗",
   "For every sacrifice you’ve made 🌹",
+  "You are my safe place 🏡",
+  "I’m proud to be your child 🌟",
+  "Your smile lights up my world ☀️",
+  "Thank you for believing in me 🙏",
+  "You are my sunshine on cloudy days 🌞",
+  "You’re the warm hug I’ll always run to 🫂",
+  "You turn our house into a home 🏠",
 ];
 
 export const milestoneMessages = [
@@ -19,6 +26,9 @@ export const mediumWishes = [
     "May every dream you hold dear come true 🌠💭",
     "I wish you time to rest, laugh, and just be happy 🛋️💖",
     "May you always feel the love you give returned to you 💞",
+    "Your love is my guiding light 🕯️💛",
+    "Thank you for being my greatest teacher 📖🌹",
+    "You gave me roots and taught me to fly 🌱🕊️",
 ];
 
 export const longLetter = "Mummy, you are my safe place, my greatest teacher, and my biggest inspiration. You gave me life, but more importantly, you gave me love without limits. You work harder than anyone I know, yet you carry kindness like it’s air. Your guidance is the compass I use when the world gets confusing. You are the most special person in my life. I am so lucky to be your son. If I could fold the sky and give it to you, it still wouldn’t be enough. You taught me to stand tall and always care — your lessons are my armor. The way you work for our family makes me want to be a better person every day. I see your sacrifices in the little things, and I will never forget them. I love you more than any words on this page — but here’s a start.";
