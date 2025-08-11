@@ -15,19 +15,21 @@ const FloatingParticles = ({ count = 50 }: { count?: number }) => {
   useEffect(() => {
     const generateParticles = () => {
       return Array.from({ length: count }).map((_, i) => {
-        const duration = Math.random() * 5 + 5; // 5s to 10s
-        const delay = Math.random() * 5;
-        const startX = Math.random() * 100;
-        const endX = startX + (Math.random() - 0.5) * 60;
+        const duration = Math.random() * 4 + 3; // 3s to 7s
+        const delay = Math.random() * 0.5; // Start burst quickly
+        const startY = Math.random() * 100;
+        const startX = i % 2 === 0 ? -10 : 110; // Start from left or right off-screen
+        const endX = startX < 0 ? Math.random() * 40 + 20 : Math.random() * 40 + 40;
+        const endY = startY + (Math.random() - 0.5) * 200;
         const rotation = Math.random() * 720 - 360;
 
         return {
           position: 'absolute',
+          top: `${startY}vh`,
           left: `${startX}vw`,
-          top: '-5vh',
-          animation: `fall ${duration}s linear ${delay}s forwards`,
-          '--start-x': `${startX}vw`,
+          animation: `burst ${duration}s ease-out ${delay}s forwards`,
           '--end-x': `${endX}vw`,
+          '--end-y': `${endY}vh`,
           '--rotation': `${rotation}deg`,
         } as React.CSSProperties;
       });
@@ -39,13 +41,13 @@ const FloatingParticles = ({ count = 50 }: { count?: number }) => {
     <div className="absolute inset-0 pointer-events-none overflow-hidden z-20">
       <style>
         {`
-          @keyframes fall {
+          @keyframes burst {
             0% {
-              transform: translateY(-5vh) rotate(0deg);
+              transform: translate(0, 0) rotate(0deg);
               opacity: 1;
             }
             100% {
-              transform: translateY(105vh) rotate(var(--rotation));
+              transform: translate(var(--end-x), var(--end-y)) rotate(var(--rotation));
               opacity: 0;
             }
           }
