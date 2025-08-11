@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { useOnScreen } from '@/components/use-on-screen';
 import {
   Dialog,
@@ -13,21 +13,35 @@ import {
 import { mediumWishes } from '@/lib/content';
 
 const StarrySky = ({ starCount = 50, shootingStarCount = 5 }) => {
-  const stars = Array.from({ length: starCount }).map((_, i) => ({
-    id: i,
-    size: Math.random() * 2 + 1,
-    left: `${Math.random() * 100}%`,
-    top: `${Math.random() * 100}%`,
-    animationDuration: `${Math.random() * 2 + 1}s`,
-  }));
+    const [stars, setStars] = useState<any[]>([]);
+    const [shootingStars, setShootingStars] = useState<any[]>([]);
 
-  const shootingStars = Array.from({ length: shootingStarCount }).map((_, i) => ({
-    id: i,
-    top: `${Math.random() * 100}%`,
-    left: `${-20 + Math.random() * 40}%`,
-    animationDelay: `${Math.random() * 15}s`,
-    animationDuration: `${Math.random() * 2 + 1}s`,
-  }));
+    useEffect(() => {
+        const generateStars = () => {
+            return Array.from({ length: starCount }).map((_, i) => ({
+                id: i,
+                size: Math.random() * 2 + 1,
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+                animationDuration: `${Math.random() * 2 + 1}s`,
+            }));
+        };
+
+        const generateShootingStars = () => {
+            return Array.from({ length: shootingStarCount }).map((_, i) => ({
+                id: i,
+                top: `${Math.random() * 100}%`,
+                left: `${-20 + Math.random() * 40}%`,
+                animationDelay: `${Math.random() * 15}s`,
+                animationDuration: `${Math.random() * 2 + 1}s`,
+            }));
+        };
+        
+        setStars(generateStars());
+        setShootingStars(generateShootingStars());
+
+    }, [starCount, shootingStarCount]);
+
 
   return (
     <div className="absolute inset-0">
