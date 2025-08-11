@@ -11,7 +11,6 @@ import InfinityLoop from '@/components/sections/infinity-loop';
 import GiftBoxReveal from '@/components/sections/gift-box-reveal';
 import { HeartTrailCanvas } from '@/components/heart-trail-canvas';
 import LegacyOfTime from '@/components/sections/legacy-of-time';
-import VirtualBouquet from '@/components/sections/virtual-bouquet';
 
 export default function Home() {
   return (
@@ -20,7 +19,6 @@ export default function Home() {
       <OpeningScene />
       <GardenOfGratitude />
       <HeartTrailMilestones />
-      <VirtualBouquet />
       <CrownOfQueens />
       <StarrySkyOfWishes />
       <ScrollOfForeverLove />

@@ -1,3 +1,4 @@
+
 "use client";
 
 import React, { useRef } from 'react';
@@ -42,7 +43,7 @@ const GiftBoxReveal = () => {
       <div className="mb-16">
         <GiftBox isOpen={isVisible} />
       </div>
-      <h2 className={`font-headline text-2xl md:text-4xl text-foreground text-glow transition-opacity duration-1000 delay-700 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
+      <h2 className={`font-display text-2xl md:text-4xl text-foreground text-glow transition-opacity duration-1000 delay-700 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
         {finalMessage}
       </h2>
       <p className={`font-display text-lg md:text-xl text-foreground/70 mt-2 transition-opacity duration-1000 delay-800 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
