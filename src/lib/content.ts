@@ -32,5 +32,6 @@ export const infinityLoopMessages = [
     "You are my best decision life made for me",
 ];
 
-export const finalMessage = "I LOVE YOU MUMMY";
+export const finalMessage = "I LOVE YOU MUMMY ❤️";
+export const finalSubMessage = "You are the best mom in the world!";
 export const finalSender = "from Jathin";
