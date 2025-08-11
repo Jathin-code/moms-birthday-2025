@@ -40,7 +40,7 @@ export const HeartTrailCanvas = () => {
 
     const handleMove = (x: number, y: number) => {
       const rect = canvas.getBoundingClientRect();
-      const colors = ['#FFDDE6', '#D6EAF8'];
+      const colors = ['#E5989B', '#6D98BA'];
       hearts.current.push({
         x: x - rect.left,
         y: y - rect.top,
