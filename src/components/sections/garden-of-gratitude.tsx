@@ -16,9 +16,9 @@ const Blossom = ({ message, delay }: { message: string; delay: number }) => {
       style={{ transitionDelay: `${delay}ms` }}
     >
       <div className="absolute -inset-2 bg-primary/30 rounded-full blur-2xl animate-pulse" style={{ animationDelay: `${delay}ms`}}></div>
-      <Card className="w-full md:w-72 h-48 m-4 backdrop-blur-lg bg-card/80 border-primary/20 shadow-2xl shadow-primary/10 transition-transform hover:scale-105 duration-300">
+      <Card className="w-72 md:w-80 h-48 m-2 md:m-4 backdrop-blur-lg bg-card/80 border-primary/20 shadow-2xl shadow-primary/10 transition-transform hover:scale-105 duration-300">
         <CardContent className="flex items-center justify-center h-full p-6">
-          <p className="text-center font-display text-xl text-card-foreground">{message}</p>
+          <p className="text-center font-display text-lg md:text-xl text-card-foreground">{message}</p>
         </CardContent>
       </Card>
     </div>
@@ -41,7 +41,7 @@ const GardenOfGratitude = () => {
           For all the seeds of kindness you've sown in my life.
         </p>
 
-        <div className="flex flex-wrap justify-center items-center gap-4 md:gap-8">
+        <div className="flex flex-wrap justify-center items-center gap-4">
           {shortMessages.map((msg, index) => (
             <Blossom key={index} message={msg} delay={index * 200} />
           ))}

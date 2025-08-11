@@ -98,12 +98,12 @@ const StarrySkyOfWishes = () => {
             <p className={`text-center text-lg md:text-xl text-white/70 mb-16 transition-opacity duration-1000 delay-300 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
                 A wish for you upon every star.
             </p>
-            <div className="flex flex-wrap justify-center gap-8 md:gap-16">
+            <div className="flex flex-wrap justify-center gap-6 md:gap-16">
                 {mediumWishes.map((wish, index) => (
                     <Dialog key={index}>
                         <DialogTrigger asChild>
                            <button className={`fade-in-up ${isVisible ? 'visible' : ''}`} style={{ transitionDelay: `${index * 150}ms` }}>
-                                <div className="w-4 h-4 rounded-full bg-white animate-pulse shadow-[0_0_12px_4px_rgba(255,255,255,0.5)] cursor-pointer hover:scale-150 transition-transform duration-300" style={{ animationDelay: `${index * 0.2}s`}} />
+                                <div className="w-3 h-3 md:w-4 md:h-4 rounded-full bg-white animate-pulse shadow-[0_0_12px_4px_rgba(255,255,255,0.5)] cursor-pointer hover:scale-150 transition-transform duration-300" style={{ animationDelay: `${index * 0.2}s`}} />
                            </button>
                         </DialogTrigger>
                         <DialogContent className="bg-black/20 backdrop-blur-md border-primary/50 text-white">

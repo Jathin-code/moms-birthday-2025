@@ -39,14 +39,14 @@ const GiftBoxReveal = () => {
   };
 
   return (
-    <section ref={ref} className="relative w-full min-h-screen py-24 flex flex-col items-center justify-center bg-gradient-to-t from-accent via-secondary/50 to-background text-center overflow-hidden">
+    <section ref={ref} className="relative w-full min-h-screen py-24 flex flex-col items-center justify-center bg-gradient-to-t from-accent via-secondary/50 to-background text-center overflow-hidden px-4">
       <div className="mb-16">
         <GiftBox isOpen={isVisible} />
       </div>
-      <h2 className={`font-display text-2xl md:text-4xl text-foreground text-glow transition-opacity duration-1000 delay-700 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
+      <h2 className={`font-display text-4xl md:text-6xl text-foreground text-glow transition-opacity duration-1000 delay-700 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
         {finalMessage}
       </h2>
-      <p className={`font-display text-lg md:text-xl text-foreground/70 mt-2 transition-opacity duration-1000 delay-800 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
+      <p className={`font-body text-lg md:text-xl text-foreground/70 mt-2 transition-opacity duration-1000 delay-800 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
         {finalSubMessage}
       </p>
       <p className={`font-display text-xl md:text-2xl text-foreground/80 mt-4 transition-opacity duration-1000 delay-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>

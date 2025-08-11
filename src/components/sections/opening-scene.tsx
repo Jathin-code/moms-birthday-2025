@@ -59,10 +59,10 @@ const OpeningScene = () => {
       <PetalBurst isBursting={isBursting} targetRect={buttonRect} />
       
       <div className="z-10 text-center flex flex-col items-center">
-        <h1 className="font-headline text-5xl md:text-8xl text-foreground text-glow mb-2 drop-shadow-lg">
+        <h1 className="font-headline text-6xl md:text-8xl text-foreground text-glow mb-2 drop-shadow-lg">
           Happy Birthday, Mummy
         </h1>
-        <div className="font-display text-2xl md:text-4xl text-foreground/80 mb-8">
+        <div className="font-display text-xl md:text-4xl text-foreground/80 mb-8">
             <Typewriter text="My Queen, My Strength, My Everything" speed={100} />
         </div>
         <Button 
@@ -70,7 +70,7 @@ const OpeningScene = () => {
           onClick={handleButtonClick}
           size="lg"
           variant="outline"
-          className="bg-background/20 text-foreground hover:bg-background/40 backdrop-blur-sm border-foreground/30 rounded-full transition-all duration-300 group shadow-lg"
+          className="bg-background/20 text-foreground hover:bg-background/40 backdrop-blur-sm border-foreground/30 rounded-full transition-all duration-300 group shadow-lg text-base md:text-lg px-8 py-6"
         >
           Step Inside
           <ArrowDown className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-y-1" />
